@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>
+  <title>Add Product</title>
+</head>
+<body>
+  <div class="container w-50 mt-5">
+    <h2 class="text-center">Tambah Product</h2> 
+    <form action="/addProducts", method="POST">
+      <div class="form-outline mb-4 ">
+        <input type="text" id="form2Example1" class="form-control" name="product_name" />
+        <label class="form-label" for="form2Example1">Product Name</label>
+      </div>
+  
+      <div class="form-outline mb-4">
+        <input type="text" id="form2Example2" class="form-control" name="product_type" />
+        <label class="form-label" for="form2Example2">Product Type</label>
+      </div>
+  
+      <div class="form-outline mb-4">
+        <input type="text" id="form2Example2" class="form-control" name="product_stock" />
+        <label class="form-label" for="form2Example2">Product Stock</label>
+      </div>
+
+      {% block content %}
+      {% if alert %}
+      <p class="alert alert-{{ alert.type }}" role="alert">{{ alert.text }}</p>
+      {% endif %}
+      {% endblock content %}
+      <button type="submit" class="btn btn-success btn-block mb-4">Submit</button>
+    </form>
+    <a class="btn btn-warning" href="/">Kembali</a>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+</body>
+</html>

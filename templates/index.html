@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>
+  <title>Inventory Database</title>
+</head>
+<body>
+  <div class="container w-50 mt-5">
+    <h2 class="text-center mb-5">Inventaris Barang</h2>
+    <a href="/addProducts" class="btn btn-success mt-3 mb-3">Tambah Barang</a>
+    <table class="table table-striped">
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Type</th>
+        <th>Product Stock</th>
+        <th>Actions</th>
+      </tr>
+      {% block content %}
+      {% for item in data %}
+      <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>
+          <form action="/removeProduct" method="post">
+            <input type="hidden" name="product_id" value="{{ item[0] }}" />
+            <button type="submit" class="btn btn-danger fw-bold btn-sm btn-rounded">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endblock content %}
+    </table>
+  </div>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+</body>
+</html>
